@@ -1,5 +1,5 @@
 {
-    "name": "diablomedia/zendframework1-filter",
+    "name": "gizmocraft/zendframework1-filter",
     "description": "Zend Framework 1 Filter component",
     "type": "library",
     "keywords": [
@@ -9,14 +9,64 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-exception"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-config"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-json"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-xml"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-server"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-loader"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-crypt"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-date"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-cache"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-log"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-locale"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gizmocraftcom/zf1-registry"
+        }
+    ],
     "require": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "diablomedia/zendframework1-exception": "^1.1.1",
-        "diablomedia/zendframework1-config": "^2.0.5",
-        "diablomedia/zendframework1-loader": "^1.0.5",
-        "diablomedia/zendframework1-crypt": "^1.0.8",
-        "diablomedia/zendframework1-date": "^1.0.5",
-        "diablomedia/zendframework1-locale": "^1.0.6"
+        "php": ">=8.5",
+        "gizmocraft/zendframework1-exception": "^2.0.0",
+        "gizmocraft/zendframework1-config": "^3.0.0",
+        "gizmocraft/zendframework1-loader": "^2.0.0",
+        "gizmocraft/zendframework1-crypt": "^2.0.0",
+        "gizmocraft/zendframework1-date": "^2.0.0",
+        "gizmocraft/zendframework1-locale": "^2.0.0"
     },
     "autoload": {
         "psr-0": {
@@ -65,7 +115,7 @@
         "ext-rar": "Used in the Zend_Filter_Compress_Rar filter",
         "ext-lzf": "Used in the Zend_Filter_Compress_Lzf filter",
         "pear/archive_tar": "For the Zend_Filter_Compress_Tar filter",
-        "diablomedia/zendframework1-filter-input": "Provides the separate Zend_Filter_Input component"
+        "gizmocraft/zendframework1-filter-input": "Provides the separate Zend_Filter_Input component"
     },
     "config": {
         "allow-plugins": {
