@@ -123,7 +123,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
             throw new Zend_Filter_Exception($this->_errorString($res));
         }
 
-        if (file_exists($content)) {
+        if (strpos((string) $content, "\0") === false && file_exists($content)) {
             $content  = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
             $basename = substr($content, strrpos($content, DIRECTORY_SEPARATOR) + 1);
             if (is_dir($content)) {
@@ -192,7 +192,7 @@ class Zend_Filter_Compress_Zip extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (file_exists($content)) {
+        if (strpos((string) $content, "\0") === false && file_exists($content)) {
             $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
         } elseif (empty($archive) || !file_exists($archive)) {
             throw new Zend_Filter_Exception('ZIP Archive not found');

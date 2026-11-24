@@ -152,7 +152,7 @@ class Zend_Filter_Compress_Tar extends Zend_Filter_Compress_CompressAbstract
     public function compress($content)
     {
         $archive = new Archive_Tar($this->getArchive(), $this->getMode());
-        if (!file_exists($content)) {
+        if (strpos((string) $content, "\0") !== false || !file_exists($content)) {
             $file = $this->getTarget();
             if (is_dir($file)) {
                 $file .= DIRECTORY_SEPARATOR . 'tar.tmp';
@@ -199,7 +199,7 @@ class Zend_Filter_Compress_Tar extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (file_exists($content)) {
+        if (strpos((string) $content, "\0") === false && file_exists($content)) {
             $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
         } elseif (empty($archive) || !file_exists($archive)) {
             throw new Zend_Filter_Exception('Tar Archive not found');

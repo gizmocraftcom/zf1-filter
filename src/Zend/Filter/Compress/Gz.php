@@ -172,7 +172,7 @@ class Zend_Filter_Compress_Gz extends Zend_Filter_Compress_CompressAbstract
     {
         $archive = $this->getArchive();
         $mode    = $this->getMode();
-        if (@file_exists($content)) {
+        if (strpos((string) $content, "\0") === false && @file_exists($content)) {
             $archive = $content;
         }
 

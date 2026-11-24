@@ -192,7 +192,7 @@ class Zend_Filter_Compress_Rar extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (file_exists($content)) {
+        if (strpos((string) $content, "\0") === false && file_exists($content)) {
             $archive = str_replace(array('/', '\\'), DIRECTORY_SEPARATOR, realpath($content));
         } elseif (empty($archive) || !file_exists($archive)) {
             throw new Zend_Filter_Exception('RAR Archive not found');

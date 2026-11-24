@@ -142,7 +142,7 @@ class Zend_Filter_Compress_Bz2 extends Zend_Filter_Compress_CompressAbstract
     public function decompress($content)
     {
         $archive = $this->getArchive();
-        if (@file_exists($content)) {
+        if (strpos((string) $content, "\0") === false && @file_exists($content)) {
             $archive = $content;
         }
 

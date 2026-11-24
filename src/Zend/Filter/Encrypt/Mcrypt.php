@@ -22,6 +22,9 @@
 /**
  * Encryption adapter for mcrypt
  *
+ * @deprecated ext-mcrypt was removed from PHP in 7.2 and is only available as an unmaintained PECL extension.
+ *             Use Zend_Filter_Encrypt_Openssl instead. Without the extension the constructor throws.
+ *
  * @category   Zend
  * @package    Zend_Filter
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
