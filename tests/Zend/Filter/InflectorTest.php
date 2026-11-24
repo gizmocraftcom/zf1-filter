@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Test class for Zend_Filter_Inflector.
@@ -29,8 +30,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
 {
     protected $inflector;
@@ -405,8 +406,8 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
     /**
      * Added str_replace('\\', '\\\\', ..) to all processedParts values to disable backreferences
      *
-     * @group ZF-2538 Zend_Filter_Inflector::filter() fails with all numeric folder on Windows
      */
+    #[Group('ZF-2538 Zend_Filter_Inflector::filter() fails with all numeric folder on Windows')]
     public function testCheckInflectorWithPregBackreferenceLikeParts()
     {
         $this->inflector = new Zend_Filter_Inflector(
@@ -433,9 +434,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         }
     }
 
-    /**
-     * @group ZF-2522
-     */
+    #[Group('ZF-2522')]
     public function testTestForFalseInConstructorParams()
     {
         $inflector = new Zend_Filter_Inflector('something', array(), false, false);
@@ -446,9 +445,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($inflector->getTargetReplacementIdentifier(), '#');
     }
 
-    /**
-     * @group ZF-2964
-     */
+    #[Group('ZF-2964')]
     public function testNoInflectableTarget()
     {
         $inflector = new Zend_Filter_Inflector('abc');
@@ -456,9 +453,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($inflector->filter(array('fo' => 'bar')), 'abc');
     }
 
-    /**
-     * @group ZF-7544
-     */
+    #[Group('ZF-7544')]
     public function testAddFilterRuleMultipleTimes()
     {
         $rules = $this->inflector->getRules();
@@ -476,9 +471,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         $this->assertCount(5, $rules);
     }
 
-    /**
-     * @group ZF-8997
-     */
+    #[Group('ZF-8997')]
     public function testPassingArrayToConstructorSetsStateAndRules()
     {
         $options   = $this->getOptions();
@@ -486,9 +479,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         $this->_testOptions($inflector);
     }
 
-    /**
-     * @group ZF-8997
-     */
+    #[Group('ZF-8997')]
     public function testPassingArrayToSetConfigSetsStateAndRules()
     {
         $options   = $this->getOptions();
@@ -497,9 +488,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         $this->_testOptions($inflector);
     }
 
-    /**
-     * @group ZF-8997
-     */
+    #[Group('ZF-8997')]
     public function testPassingZendConfigObjectToConstructorSetsStateAndRules()
     {
         $config    = $this->getConfig();
@@ -507,9 +496,7 @@ class Zend_Filter_InflectorTest extends PHPUnit\Framework\TestCase
         $this->_testOptions($inflector);
     }
 
-    /**
-     * @group ZF-8997
-     */
+    #[Group('ZF-8997')]
     public function testPassingZendConfigObjectToSetConfigSetsStateAndRules()
     {
         $config    = $this->getConfig();

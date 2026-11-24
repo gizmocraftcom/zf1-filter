@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * Test class for Zend_Filter_PregReplace.
@@ -29,8 +30,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_PregReplaceTest extends PHPUnit\Framework\TestCase
 {
     protected $filter;
@@ -103,9 +104,7 @@ class Zend_Filter_PregReplaceTest extends PHPUnit\Framework\TestCase
         $filtered = $this->filter->filter($string);
     }
 
-    /**
-      * @group ZF-9202
-      */
+    #[Group('ZF-9202')]
     public function testExtendsPregReplace()
     {
         $startMatchPattern = '~(&gt;){3,}~i';
@@ -114,9 +113,7 @@ class Zend_Filter_PregReplaceTest extends PHPUnit\Framework\TestCase
     }
 }
 
-/**
- * @group ZF-9202
- */
+#[Group('ZF-9202')]
 class XPregReplace extends Zend_Filter_PregReplace
 {
     protected $_matchPattern = '~(&gt;){3,}~i';

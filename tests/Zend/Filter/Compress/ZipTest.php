@@ -20,15 +20,16 @@
  * @version    $Id: $
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
  * @package    Zend_Filter
  * @subpackage UnitTests
- * @group      Zend_Filter
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_Compress_ZipTest extends PHPUnit\Framework\TestCase
 {
     public function setUp(): void
@@ -278,9 +279,6 @@ class Zend_Filter_Compress_ZipTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('Zip', $filter->toString());
     }
 
-    /**
-     * @group
-     */
     public function testDecompressWillThrowExceptionWhenDecompressingWithNoTarget()
     {
         $this->expectException(\Zend_Filter_Exception::class);

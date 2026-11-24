@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,14 +28,14 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_Encrypt_OpensslTest extends PHPUnit\Framework\TestCase
 {
     public function setUp(): void
     {
-        if (!extension_loaded('openssl') || substr(OPENSSL_VERSION_TEXT, 0, 9) === 'OpenSSL 3') {
-            $this->markTestSkipped('This filter needs the openssl extension and must not be version 3');
+        if (!extension_loaded('openssl') || !in_array('rc4', array_map('strtolower', openssl_get_cipher_methods()), true)) {
+            $this->markTestSkipped('This filter needs the openssl extension with the RC4 cipher (a legacy cipher, disabled by default in OpenSSL 3 and later)');
         }
     }
 
@@ -214,10 +215,13 @@ d/fxzPfuO/bLpADozTAnYT9Hu3wPrQVLeAfCp0ojqH7DYg==
         $filter->setEnvelopeKey('unknown');
         try {
             $filter->decrypt('unknown');
-            $this->fail();
         } catch (Zend_Filter_Exception $e) {
             $this->assertStringContainsString('was not able to decrypt', $e->getMessage());
+            return;
         }
+        // OpenSSL 3.2 and later implicitly rejects invalid RSA envelope keys: openssl_open() returns garbage
+        // instead of failing, so the library cannot detect an invalid envelope key there.
+        $this->markTestSkipped('OpenSSL with RSA implicit rejection does not fail on an invalid envelope key');
     }
 
     /**

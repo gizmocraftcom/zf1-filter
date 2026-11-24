@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_EncryptTest extends PHPUnit\Framework\TestCase
 {
     protected $errorReporting;
@@ -71,8 +72,8 @@ class Zend_Filter_EncryptTest extends PHPUnit\Framework\TestCase
      */
     public function testBasicOpenssl()
     {
-        if (!extension_loaded('openssl') || substr(OPENSSL_VERSION_TEXT, 0, 9) === 'OpenSSL 3') {
-            $this->markTestSkipped('Openssl extension not installed, or incompatible version');
+        if (!extension_loaded('openssl') || !in_array('rc4', array_map('strtolower', openssl_get_cipher_methods()), true)) {
+            $this->markTestSkipped('Openssl extension with the RC4 cipher (a legacy cipher, disabled by default in OpenSSL 3 and later) is needed');
         }
 
         $filter         = new Zend_Filter_Encrypt(array('adapter' => 'Openssl'));
@@ -205,8 +206,8 @@ PIDs9E7uuizAKDhRRRvho8BS
      */
     public function testEncryptionWithDecryptionOpenssl()
     {
-        if (!extension_loaded('openssl') || substr(OPENSSL_VERSION_TEXT, 0, 9) === 'OpenSSL 3') {
-            $this->markTestSkipped('Openssl extension not installed, or incompatible version');
+        if (!extension_loaded('openssl') || !in_array('rc4', array_map('strtolower', openssl_get_cipher_methods()), true)) {
+            $this->markTestSkipped('Openssl extension with the RC4 cipher (a legacy cipher, disabled by default in OpenSSL 3 and later) is needed');
         }
 
         $filter = new Zend_Filter_Encrypt(array('adapter' => 'Openssl'));

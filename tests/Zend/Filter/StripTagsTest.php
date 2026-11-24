@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
 {
     /**
@@ -379,9 +380,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that a comment IS removed when comments are flagged as allowed
      *
-     * @group ZF-8473
      * @return void
      */
+    #[Group('ZF-8473')]
     public function testSpecifyingCommentsAllowedStillStripsComments()
     {
         $input    = '<!-- a comment -->';
@@ -393,9 +394,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that a comment containing tags is untouched when comments are allowed
      *
-     * @group ZF-8473
      * @return void
      */
+    #[Group('ZF-8473')]
     public function testSpecifyingCommentsAllowedStripsCommentsContainingTags()
     {
         $input    = '<!-- a comment <br /> <h1>SuperLarge</h1> -->';
@@ -409,9 +410,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
      * case, this should have no effect) and a comment contains tags and
      * linebreaks
      *
-     * @group ZF-8473
      * @return void
      */
+    #[Group('ZF-8473')]
     public function testSpecifyingCommentsAllowedFiltersCommentsContainingTagsAndLinebreaks()
     {
         $input    = "<br> test <p> text </p> with <!-- comments --> and <!-- hidd\n\nen <br> -->";
@@ -423,9 +424,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures expected behavior when comments are allowed but nested
      *
-     * @group ZF-8473
      * @return void
      */
+    #[Group('ZF-8473')]
     public function testSpecifyingCommentsAllowedShouldStillStripNestedComments()
     {
         $input    = '<a> <!-- <b> <!-- <c> --> <d> --> <e>';
@@ -437,10 +438,10 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that space between double-hyphen and closing bracket still matches as a comment delimiter
      *
-     * @group ZF-8473
      * @see    http://www.w3.org/TR/1999/REC-html401-19991224/intro/sgmltut.html#h-3.2.4
      * @return void
      */
+    #[Group('ZF-8473')]
     public function testFilterCommentsAllowedDelimiterEndingWhiteSpace()
     {
         $input    = '<a> <!-- <b> --  > <c>';
@@ -469,9 +470,9 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
     /**
      * Ensures that an allowed attribute's value may end with an equals sign '='
      *
-     * @group ZF-3293
-     * @group ZF-5983
      */
+    #[Group('ZF-3293')]
+    #[Group('ZF-5983')]
     public function testAllowedAttributeValueMayEndWithEquals()
     {
         $tagsAllowed = array(
@@ -482,9 +483,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($input, $this->_filter->filter($input));
     }
 
-    /**
-     * @group ZF-5983
-     */
+    #[Group('ZF-5983')]
     public function testDisallowedAttributesSplitOverMultipleLinesShouldBeStripped()
     {
         $tagsAllowed = array('a' => 'href');
@@ -536,9 +535,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
 
-    /**
-     * @group ZF-9434
-     */
+    #[Group('ZF-9434')]
     public function testCommentWithTagInSameLine()
     {
         $input    = 'test <!-- testcomment --> test <div>div-content</div>';
@@ -546,9 +543,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
 
-    /**
-     * @group ZF-9833
-     */
+    #[Group('ZF-9833')]
     public function testMultiParamArray()
     {
         $filter = new Zend_Filter_StripTags(array('a','b','hr'), array(), true);
@@ -558,9 +553,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $filter->filter($input));
     }
 
-    /**
-     * @group ZF-9828
-     */
+    #[Group('ZF-9828')]
     public function testMultiQuoteInput()
     {
         $filter = new Zend_Filter_StripTags(
@@ -575,9 +568,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $filter->filter($input));
     }
 
-    /**
-     * @group ZF-10256
-     */
+    #[Group('ZF-10256')]
     public function testNotClosedHtmlCommentAtEndOfString()
     {
         $input    = 'text<!-- not closed comment at the end';
@@ -585,9 +576,7 @@ class Zend_Filter_StripTagsTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($expected, $this->_filter->filter($input));
     }
 
-    /**
-     * @group ZF-11617
-     */
+    #[Group('ZF-11617')]
     public function testFilterCanAllowHyphenatedAttributeNames()
     {
         $input    = '<li data-disallowed="no!" data-name="Test User" data-id="11223"></li>';

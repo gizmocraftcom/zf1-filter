@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_Filter_StringTrimTest extends PHPUnit\Framework\TestCase
 {
     /**
@@ -113,9 +114,7 @@ class Zend_Filter_StringTrimTest extends PHPUnit\Framework\TestCase
         $this->assertEquals('/', $this->_filter->filter('/'));
     }
 
-    /**
-     * @group ZF-10691
-     */
+    #[Group('ZF-10691')]
     public function testSetParamCharListToConstructor()
     {
         $config = new Zend_Config(array('charlist' => '&'));

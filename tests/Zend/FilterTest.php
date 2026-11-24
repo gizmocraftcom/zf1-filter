@@ -20,6 +20,7 @@
  * @version    $Id$
  */
 
+use PHPUnit\Framework\Attributes\Group;
 
 /**
  * @category   Zend
@@ -27,8 +28,8 @@
  * @subpackage UnitTests
  * @copyright  Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
- * @group      Zend_Filter
  */
+#[Group('Zend_Filter')]
 class Zend_FilterTest extends PHPUnit\Framework\TestCase
 {
     protected $_errorOccurred;
@@ -134,9 +135,9 @@ class Zend_FilterTest extends PHPUnit\Framework\TestCase
      *
      * Refactored to conform with ZF-2724.
      *
-     * @group  ZF-2724
      * @return void
      */
+    #[Group('ZF-2724')]
     public function testStaticFactoryClassNotFound()
     {
         $this->expectException(\Zend_Filter_Exception::class);
@@ -147,11 +148,11 @@ class Zend_FilterTest extends PHPUnit\Framework\TestCase
     /**
      * Handle file not found errors
      *
-     * @group  ZF-2724
      * @param  int $errnum
      * @param  string $errstr
      * @return void
      */
+    #[Group('ZF-2724')]
     public function handleNotFoundError($errnum, $errstr)
     {
         if (strstr($errstr, 'No such file')) {
