@@ -1,7 +1,6 @@
 # Zend Framework 1 - Filter
 
 [![Build](https://github.com/gizmocraftcom/zf1-filter/workflows/Build/badge.svg?event=push)](https://github.com/gizmocraftcom/zf1-filter/actions?query=workflow%3ABuild+event%3Apush)
-[![codecov](https://codecov.io/gh/gizmocraftcom/zf1-filter/branch/master/graph/badge.svg)](https://codecov.io/gh/gizmocraftcom/zf1-filter)
 [![Latest Stable Version](https://poser.pugx.org/gizmocraft/zendframework1-filter/v/stable)](https://packagist.org/packages/gizmocraft/zendframework1-filter)
 [![Total Downloads](https://poser.pugx.org/gizmocraft/zendframework1-filter/downloads)](https://packagist.org/packages/gizmocraft/zendframework1-filter)
 [![License](https://poser.pugx.org/gizmocraft/zendframework1-filter/license)](https://packagist.org/packages/gizmocraft/zendframework1-filter)
