@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Development
+
+- Dev dependency `pear/archive_tar` raised to `^1.6.1`. Earlier releases return a value from the constructor, which PHP 8.6 deprecates, so the `--prefer-lowest` CI job failed.
+
 ## 2.0.0
 
 Fork of `diablomedia/zendframework1-filter`, published as `gizmocraft/zendframework1-filter`.

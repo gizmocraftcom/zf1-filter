@@ -35,7 +35,7 @@
         "phpunit/phpunit": "^13.4.8",
         "phpstan/phpstan": "^2.3.7",
         "friendsofphp/php-cs-fixer": "^3.95.32",
-        "pear/archive_tar": "^1.4.6",
+        "pear/archive_tar": "^1.6.1",
         "phpro/grumphp-shim": "^2.27.2"
     },
     "include-path": [
